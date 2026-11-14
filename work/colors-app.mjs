@@ -960,7 +960,7 @@ function initialize() {
       $('swap-intro').showModal();
     }
   }
-  const progressKey = entry => entry.originalIndex ?? (entry.carry ? (entry.carryLesson ? 'swap-60' : 'carry-' + entry.carryIndex) : entry.swapLesson ? 45 : 'swap-' + (entry.swapIndex ?? 0));
+  const progressKey = entry => entry.progressId ?? entry.originalIndex ?? (entry.carry ? (entry.carryLesson ? 'swap-60' : 'carry-' + entry.carryIndex) : entry.swapLesson ? 45 : 'swap-' + (entry.swapIndex ?? 0));
   function fillPicker(chapter) {
     $('chapter-tabs').hidden = LEVELS.length < 30;
     $('chapter-swap').setAttribute('aria-pressed', String(chapter === 2));

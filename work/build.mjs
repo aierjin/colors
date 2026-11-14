@@ -47,6 +47,9 @@ if (emptyDemo) {
   const interlude = [0,1,2,3,5,6,7,9,12,17].map(index => ({
     ...carry[index], name:index===0?'错层移位':`满盘 · ${carry[index].colors} 色`, seconds:undefined, limit:null,
   }));
+  const opening = JSON.parse(read('work/opening-levels.json'));
+  if (opening.length !== 6) throw new Error("Expected six opening levels");
+  opening.forEach((level, i) => { levels[31+i] = {...levels[31+i], ...level, progressId:"opening-v2-" + (i+2)}; });
   levels = [...levels.slice(30), ...interlude, ...levels.slice(0,30).map((level, swapIndex) => ({...level,swapIndex}))];
 }
 const code = [

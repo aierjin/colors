@@ -1,0 +1,496 @@
+[
+  {
+    "name": "双色练习",
+    "board": [
+      [
+        {
+          "color": 0,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 0,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 2,
+          "direction": 1
+        }
+      ],
+      [
+        {
+          "color": 0,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 0,
+          "height": 1,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 2,
+          "direction": 1
+        }
+      ],
+      [
+        {
+          "color": 0,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 3,
+          "direction": 1
+        }
+      ]
+    ],
+    "route": [
+      5,
+      7
+    ],
+    "minimum": 2,
+    "limit": null
+  },
+  {
+    "name": "观察四邻",
+    "board": [
+      [
+        {
+          "color": 0,
+          "height": 4,
+          "direction": -1
+        },
+        {
+          "color": 0,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 3,
+          "direction": 1
+        }
+      ],
+      [
+        {
+          "color": 0,
+          "height": 4,
+          "direction": -1
+        },
+        {
+          "color": 0,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 2,
+          "direction": 1
+        }
+      ],
+      [
+        {
+          "color": 2,
+          "height": 1,
+          "direction": 1
+        },
+        {
+          "color": 2,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 2,
+          "height": 2,
+          "direction": 1
+        }
+      ]
+    ],
+    "route": [
+      3,
+      6,
+      8
+    ],
+    "minimum": 3,
+    "limit": null
+  },
+  {
+    "name": "看准箭头",
+    "board": [
+      [
+        {
+          "color": 0,
+          "height": 3,
+          "direction": -1
+        },
+        {
+          "color": 0,
+          "height": 1,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 4,
+          "direction": -1
+        }
+      ],
+      [
+        {
+          "color": 0,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 0,
+          "height": 1,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 3,
+          "direction": 1
+        }
+      ],
+      [
+        {
+          "color": 2,
+          "height": 1,
+          "direction": 1
+        },
+        {
+          "color": 2,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 2,
+          "height": 1,
+          "direction": 1
+        }
+      ]
+    ],
+    "route": [
+      1,
+      7,
+      7
+    ],
+    "minimum": 3,
+    "limit": null
+  },
+  {
+    "name": "四色分区",
+    "board": [
+      [
+        {
+          "color": 0,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 0,
+          "height": 1,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 1,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 2,
+          "direction": 1
+        }
+      ],
+      [
+        {
+          "color": 0,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 0,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 2,
+          "direction": 1
+        }
+      ],
+      [
+        {
+          "color": 2,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 2,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 3,
+          "height": 1,
+          "direction": 1
+        },
+        {
+          "color": 3,
+          "height": 2,
+          "direction": 1
+        }
+      ],
+      [
+        {
+          "color": 2,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 2,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 3,
+          "height": 1,
+          "direction": 1
+        },
+        {
+          "color": 3,
+          "height": 2,
+          "direction": 1
+        }
+      ]
+    ],
+    "route": [
+      1,
+      5,
+      10,
+      14
+    ],
+    "minimum": 4,
+    "limit": null
+  },
+  {
+    "name": "先铺一步",
+    "board": [
+      [
+        {
+          "color": 0,
+          "height": 3,
+          "direction": -1
+        },
+        {
+          "color": 0,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 3,
+          "direction": 1
+        }
+      ],
+      [
+        {
+          "color": 0,
+          "height": 1,
+          "direction": 1
+        },
+        {
+          "color": 0,
+          "height": 3,
+          "direction": -1
+        },
+        {
+          "color": 1,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 2,
+          "direction": 1
+        }
+      ],
+      [
+        {
+          "color": 2,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 2,
+          "height": 4,
+          "direction": -1
+        },
+        {
+          "color": 3,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 3,
+          "height": 3,
+          "direction": -1
+        }
+      ],
+      [
+        {
+          "color": 2,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 2,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 3,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 3,
+          "height": 3,
+          "direction": -1
+        }
+      ]
+    ],
+    "route": [
+      3,
+      12,
+      13,
+      4,
+      2
+    ],
+    "minimum": 5,
+    "limit": null
+  },
+  {
+    "name": "消除顺序",
+    "board": [
+      [
+        {
+          "color": 0,
+          "height": 1,
+          "direction": 1
+        },
+        {
+          "color": 0,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 2,
+          "direction": 1
+        }
+      ],
+      [
+        {
+          "color": 0,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 0,
+          "height": 1,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 2,
+          "direction": 1
+        },
+        {
+          "color": 1,
+          "height": 1,
+          "direction": 1
+        }
+      ],
+      [
+        {
+          "color": 2,
+          "height": 4,
+          "direction": -1
+        },
+        {
+          "color": 2,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 3,
+          "height": 4,
+          "direction": -1
+        },
+        {
+          "color": 3,
+          "height": 2,
+          "direction": -1
+        }
+      ],
+      [
+        {
+          "color": 2,
+          "height": 3,
+          "direction": 1
+        },
+        {
+          "color": 2,
+          "height": 3,
+          "direction": -1
+        },
+        {
+          "color": 3,
+          "height": 2,
+          "direction": -1
+        },
+        {
+          "color": 3,
+          "height": 3,
+          "direction": 1
+        }
+      ]
+    ],
+    "route": [
+      0,
+      4,
+      11,
+      5,
+      14,
+      15
+    ],
+    "minimum": 6,
+    "limit": null
+  }
+]
