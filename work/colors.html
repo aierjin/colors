@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff7ee">
+  <link rel="icon" href="data:,">
+  <title>colors</title>
+  <style>/* COLORS_CSS */</style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <h1 class="wordmark">
+        <span class="brand-candy" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>colors<span class="brand-dot">.</span></span>
+      </h1>
+      <div class="chapter" id="chapter">第 1 关</div>
+      <nav class="game-nav" aria-label="游戏菜单">
+      <span id="total-stars" aria-label="累计星数">★ 0</span>
+      <button id="teach" class="control" type="button">教学</button>
+      <button id="home" class="control" type="button">封面</button>
+      <button id="choose" class="control" type="button">选关</button>
+      <button id="reset" class="control" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8a8 8 0 1 1-1 7M4 3v5h5"/></svg>重置
+      </button>
+      </nav>
+    </header>
+    <main id="app" aria-label="4 × 4 软糖棋盘">
+      <div class="board-hud">
+        <button class="control" id="dead-end-toggle" type="button" role="switch" aria-checked="false" aria-label="死局提醒" hidden>死局提醒 · 关</button>
+        <div id="timer" role="timer" aria-label="剩余时间" hidden>1:00</div>
+      </div>
+      <aside class="level-note">
+        <h2>把同色软糖<br>升到一样高</h2>
+        <p>点击一根，它和四邻<br>会各自升降一层。</p>
+      </aside>
+      <div class="step-count"><span id="steps">00</span><small id="step-unit">次升降</small><small class="best" id="best"></small><small id="budget" hidden></small></div>
+      <div class="stage" id="stage">
+        <div id="pillar-controls" aria-label="软糖柱"></div>
+        <div id="clear-cheer" class="clear-cheer" aria-hidden="true"></div>
+      </div>
+      <p id="render-error" role="alert" hidden>当前浏览器无法启动 3D 棋盘，请在支持 WebGL 2 的浏览器中打开。</p>
+    </main>
+    <footer>
+      <div class="status" role="status" aria-live="polite" id="status">
+        <strong id="status-title">同色等高，整组消除</strong>
+      </div>
+      <div id="dead-end" hidden>
+        <strong role="status">这一步后无法清盘</strong>
+        <button id="undo-dead-end" class="control" type="button">撤销这一步</button>
+      </div>
+      <div class="actions">
+        <button id="undo" class="control" type="button" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 4-5 5 5 5M3 9h10a7 7 0 0 1 7 7"/></svg>撤销
+        </button>
+        <div id="swatches" role="img" aria-label="剩余颜色"></div>
+        <button id="hint" class="control" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6m-5 3h4M8 14a6 6 0 1 1 8 0l-1 2H9z"/></svg>提示
+        </button>
+        <button id="next" class="control" type="button" hidden>下一关</button>
+      </div>
+      <button id="single" class="control" type="button" aria-pressed="false" hidden>单点 ×0</button>
+      <div class="bottom-tools">
+        <label for="view">视角</label>
+        <input id="view" type="range" min="13" max="89.5" step="any" value="54">
+        <button id="rotate" class="control view-button" type="button" aria-label="恢复视角" title="恢复视角">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3ZM4 7.5l8 4.5 8-4.5M12 12v9"/></svg>
+          <span>恢复视角</span>
+        </button>
+      </div>
+    </footer>
+    <svg id="guide-arrow" aria-hidden="true" hidden>
+      <defs><marker id="guide-tip" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9"/></marker></defs>
+      <line marker-end="url(#guide-tip)"/>
+    </svg>
+    <section id="guide" hidden aria-label="第一关教学">
+      <button id="guide-skip" class="control" type="button" aria-label="跳过教学">跳过</button>
+      <div id="guide-copy" aria-live="polite"></div>
+      <div class="guide-actions">
+        <button id="guide-next" class="control" type="button">继续</button>
+      </div>
+    </section>
+  </div>
+  <section id="cover" aria-label="colors 封面">
+    <div class="cover-mark brand-candy" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <h2>colors<span class="brand-dot">.</span></h2>
+    <p>让同色软糖一样高</p>
+    <div class="cover-actions">
+      <button id="start" class="control primary" type="button">开始游戏</button>
+      <button id="cover-choose" class="control" type="button">选择关卡</button>
+    </div>
+  </section>
+  <dialog id="picker" aria-labelledby="picker-title">
+    <h2 id="picker-title">选择关卡</h2>
+    <nav id="chapter-tabs" aria-label="章节" hidden>
+      <button class="control" id="chapter-lift" type="button">第一章 · 连锁升降</button>
+      <button class="control" id="chapter-carry" type="button" hidden>第二章 · 错层移位</button>
+      <button class="control" id="chapter-swap" type="button">第三章 · 顶层交换</button>
+    </nav>
+    <div id="level-grid"></div>
+    <button id="close-picker" class="control" type="button">返回</button>
+  </dialog>
+  <dialog id="help" aria-labelledby="help-title">
+    <h2 id="help-title">怎么玩</h2>
+    <p>点击一根软糖柱。它和上下左右仍在棋盘上的柱子，各自沿柱顶箭头升降一层。</p>
+    <div class="height-cycle" aria-label="高度从一层升到四层，再降回一层">1 → 2 → 3 → 4 → 3 → 2 → 1</div>
+    <p>到 4 层后，下次受联动降到 3 层。到 1 层后，下次受联动升到 2 层。每次只动一层。</p>
+    <p>同色柱全部等高时会整组消除，位置可以分散。空格不再参与联动，清空棋盘即可通关。底部色块表示还剩哪些颜色。</p>
+    <p>拖棋盘可环绕，拖滑杆可调整俯仰角。「恢复视角」回到默认角度。「撤销」退一步，「重置」重新开局，「提示」指出建议点击的位置。</p>
+    <p>以最少步数过关得 5 星，每多用 2 步扣半星。限时关会显示倒计时。联动柱按符号配对，例如 ∞ 配 ∞，△ 配 △。</p>
+    <p>悬停或按住柱子可预览受影响的位置。第 36 关第一次消除后可使用一次「单点」，只让点中的柱子升降一层。</p>
+    <button id="help-close" class="control primary" type="button">返回游戏</button>
+  </dialog>
+  <dialog id="single-intro" aria-labelledby="single-title">
+    <h2 id="single-title">新玩法 · 单点</h2>
+    <p>第一次消除后，获得一次「单点」。先按「单点 ×1」，再点任意一根柱子，只有它自己升降一层。</p>
+    <button id="single-start" class="control primary" type="button">试一次</button>
+  </dialog>
+  <dialog id="carry-intro" aria-labelledby="carry-title">
+    <h2 id="carry-title">错层移位</h2>
+    <p>先点一根柱子，再点上下左右相邻的一格。顶糖会搬到目标格，来源少一层，目标多一层。</p>
+    <p>空格也能接糖，每格最多 4 层。至少三颗同色顶糖在同一高度就一起消除，清空棋盘即可过关。</p>
+    <button id="carry-start" class="control primary" type="button">试一次</button>
+  </dialog>
+  <dialog id="swap-intro" aria-labelledby="swap-title">
+    <h2 id="swap-title">新玩法 · 交换顶层</h2>
+    <p>依次点<strong>上下左右相邻</strong>的两根柱子，交换各自最上面的一颗。柱子高矮不同也能换。</p>
+    <p><strong>同色顶层也可以互换，不计步。</strong></p>
+    <p>同一层有至少三颗同色软糖露在最上面，就会一起消除，位置不用相邻。新露出来的软糖也会继续检查。</p>
+    <p id="swap-goal">清空棋盘就过关。</p>
+    <button id="swap-start" class="control primary" type="button">试一次</button>
+  </dialog>
+  <dialog id="completion" aria-labelledby="completion-title">
+    <h2 id="completion-title">清盘成功！</h2>
+    <div id="completion-stars"></div>
+    <p id="completion-detail"></p>
+    <div class="completion-actions">
+      <button id="completion-replay" class="control" type="button">重玩</button>
+      <button id="completion-next" class="control primary" type="button">下一关</button>
+      <button id="completion-choose" class="control" type="button">选关</button>
+    </div>
+  </dialog>
+  <dialog id="timeout" aria-labelledby="timeout-title">
+    <h2 id="timeout-title">时间到</h2>
+    <div class="completion-actions">
+      <button id="timeout-replay" class="control primary" type="button">再试一次</button>
+      <button id="timeout-choose" class="control" type="button">选关</button>
+    </div>
+  </dialog>
+  <script>/* COLORS_SCRIPT */</script>
+</body>
+</html>
+
